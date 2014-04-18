@@ -11,6 +11,12 @@ Most of the times I just need a very simple key-value storage and Redis does a t
 
 The idea of this wrapper is to start using JSON based storage at the beginning and in the future, if necessary, move the storate of an application to Redis or any other supported driver without changing a single line of code.
 
+## Installation
+
+```
+sudo pip install keywrapper
+```
+
 ## Basic usage
 
 JSON store:
