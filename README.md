@@ -9,7 +9,7 @@ Extremely simple key-value storage wrapper
 I usually use [Redis](http://redis.io/) for small projects with a dynamic storage component.
 Most of the times I just need a very simple key-value storage and Redis does a terrific job with that. However not all the applications need a high performance storage but just being very easy to start using them.
 
-The idea of this wrapper is to start using JSON based storage at the beginning and in the future, if necessary, move the storate of an application to Redis or any other supported driver without changing a single line of code.
+The idea of this wrapper is to start using a serverless JSON based storage. In the future, if better performance ins required, move the storage of an application to Redis or any other supported driver without changing a single line of code.
 
 ## Installation
 
