@@ -19,9 +19,11 @@ class KeyStore:
 
 class RedisStore(KeyStore):
 
-  def __init__(self):
-    redis_db = 5
-    self.connection = redis.Redis(host='localhost', port=6379, db=redis_db)
+  def __init__(self, options={}):
+    redis_host = options['host'] if 'host' in options else 'localhost'
+    redis_port = options['port'] if 'port' in options else 6379
+    redis_db = options['db'] if 'db' in options else 0
+    self.connection = redis.Redis(host=redis_host, port=redis_port, db=redis_db)
 
   def get_value(self, key, attribute):
     return self.connection.hget(key, attribute)
@@ -36,10 +38,10 @@ class RedisStore(KeyStore):
 
 class JSONStore(KeyStore):
 
-  def __init__(self, store_filename='store.json'):
-    self.store_filename = store_filename
-    if not os.path.exists(store_filename):
-      f = open(store_filename, 'w')
+  def __init__(self, options={}):
+    self.store_filename = options['store_filename'] if 'store_filename' in options else 'store.json'
+    if not os.path.exists(self.store_filename):
+      f = open(self.store_filename, 'w')
       f.write('{}')
       f.close()
 
@@ -79,10 +81,10 @@ class JSONStore(KeyStore):
     self.__write_store(json_data)
 
 
-def new_store(driver):
+def new_store(driver, options={}):
   if driver == 'redis':
-    return RedisStore()
+    return RedisStore(options)
   elif driver == 'json':
-    return JSONStore()
+    return JSONStore(options)
   else:
     raise Exception("Driver %s not supported" % driver)
