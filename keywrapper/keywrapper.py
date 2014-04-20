@@ -70,9 +70,6 @@ class JSONStore(KeyStore):
     return value
 
   def set_value(self, key, attribute, value):
-    print key
-    print attribute
-    print value
     json_data = self.__read_store()
     if not key in json_data:
       json_data[key] = {attribute: value}
