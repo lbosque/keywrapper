@@ -64,4 +64,8 @@ These are the current implemented features:
   * dump function implemented only in JSON driver
   * restore function implemented in both JSON and Redis drivers
 
+## Tests
 
+```
+python tests/unit/test_keywrapper.py
+```
