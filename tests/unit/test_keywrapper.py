@@ -1,6 +1,9 @@
 import unittest
-import keywrapper
 import random
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
+import keywrapper
 
 class JSONStoreTestCase(unittest.TestCase):
 
