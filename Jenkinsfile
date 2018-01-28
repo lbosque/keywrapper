@@ -6,9 +6,16 @@ pipeline {
         sh 'echo "HELLO"'
       }
     }
+    stage('prepare-env') {
+      steps {
+        sh '''virtualenv /tmp/keywrapper
+        /tmp/keywrapper/bin/pip install redis
+'''
+      }
+    }
     stage('test') {
       steps {
-        sh '''python tests/unit/test_keywrapper.py
+        sh '''/tmp/keywrapper/bin/python tests/unit/test_keywrapper.py
 '''
       }
     }
